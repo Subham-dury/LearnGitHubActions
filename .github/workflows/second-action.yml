@@ -23,6 +23,5 @@ jobs:
       
         # Install dependencies
       - name: Install dependencies
-        run: |
-          cd base-Proj2
-          npm i --legacy-peer-deps
+        run: npm i --legacy-peer-deps
+        working-directory: base-Proj2
