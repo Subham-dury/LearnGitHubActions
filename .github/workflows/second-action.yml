@@ -23,8 +23,13 @@ jobs:
       
         # Install dependencies
       - name: Install dependencies
-        run: npm ci
-        working-directory: baseProj2
+        run: |
+          if [ -f baseProj2/package-lock.json ]; then
+           npm ci
+          else
+            npm Install
+          fi
+        # working-directory: baseProj2
       
       #   # Run tests
       # - name: Run test
