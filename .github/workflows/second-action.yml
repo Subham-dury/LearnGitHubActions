@@ -4,7 +4,7 @@ on:
     branches:
       - main # run action when push in main branch
 jobs:
-  run_ci_cd:
+  deploy_code:
     runs-on: ubuntu-latest # Os for GitHub vm
     steps:
 
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: LearnGitHubActions/baseProj2
+          repository: baseProj2
       
         # Install required Runtime if not pre-installed
       - name: Install NodeJS
