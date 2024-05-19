@@ -25,4 +25,4 @@ jobs:
       - name: Install dependencies
         run: |
           cd base-Proj2
-          npm ci
+          npm ci --legacy-peer-deps
