@@ -23,10 +23,5 @@ jobs:
       
         # Install dependencies
       - name: Install dependencies
-        run: npm@5 ci
+        run: npm ci
         working-directory: baseProj2
-      
-      #   # Run tests
-      # - name: Run test
-      #   run: npm test
-      #   working-directory: baseProj2
