@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          repository: baseProj2
+          path: baseProj2
       
         # Install required Runtime if not pre-installed
       - name: Install NodeJS
