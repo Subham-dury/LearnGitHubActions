@@ -16,7 +16,7 @@ jobs:
       
         # Install required Runtime if not pre-installed
       - name: Install NodeJS
-        uses: sctions/setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           check-latest: false
