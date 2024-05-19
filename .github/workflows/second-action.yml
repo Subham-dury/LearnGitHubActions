@@ -1,0 +1,30 @@
+name: Test workflow
+on:
+  push:
+    branches:
+      - main # run action when push in main branch
+jobs:
+  run_ci_cd:
+    runs-on: ubuntu-latest # Os for GitHub vm
+    steps:
+
+        # Checkout the code. Respository path can be added
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: LearnGitHubActions/baseProj2
+      
+        # Install required Runtime if not pre-installed
+      - name: Install NodeJS
+        uses: sctions/setup-node@v4
+        with:
+          node-version: 18
+          check-latest: false
+      
+        # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      
+        # Run tests
+      - name: Run test
+        run: npm test
