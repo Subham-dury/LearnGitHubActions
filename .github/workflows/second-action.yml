@@ -23,5 +23,6 @@ jobs:
       
         # Install dependencies
       - name: Install dependencies
-        run: npm ci
-        working-directory: base-Proj2
+        run: |
+          cd base-Proj2
+          npm ci
