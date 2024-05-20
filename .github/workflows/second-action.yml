@@ -4,10 +4,9 @@ on:
     branches:
       - main # run action when push in main branch
 jobs:
-  deploy_code:
+  test_code:
     runs-on: ubuntu-latest # Os for GitHub vm
     steps:
-
         # Checkout the code. Respository path can be added
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,4 +25,23 @@ jobs:
         # Run tests
       - name: Run tests
         run: npm test
+        working-directory: base-Proj2
+  
+  build_code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: base-Proj2
+
+      - name: Build code
+        run: npm run build
         working-directory: base-Proj2
