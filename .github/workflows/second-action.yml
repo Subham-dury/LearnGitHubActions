@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main # run action when push in main branch
+  workflow_dispatch:
 jobs:
   test_code:
     runs-on: ubuntu-latest # Os for GitHub vm
