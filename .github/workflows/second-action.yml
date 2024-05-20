@@ -22,3 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: base-Proj2
+
+        # Run tests
+      - name: Run tests
+        run: npm test
+        working-directory: base-Proj2s
