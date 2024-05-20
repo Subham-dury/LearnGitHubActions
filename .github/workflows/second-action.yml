@@ -26,4 +26,4 @@ jobs:
         # Run tests
       - name: Run tests
         run: npm test
-        working-directory: base-Proj2s
+        working-directory: base-Proj2
