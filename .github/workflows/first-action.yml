@@ -6,5 +6,9 @@ jobs:
     steps:
       - name: print start
         run: echo "Action starting"
+
+      - name: print context
+        run: echo "'context:' ${{ github.context }}"
+
       - name: print end
         run: echo "Action ended"

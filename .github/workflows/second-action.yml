@@ -1,4 +1,4 @@
-name: Test workflow
+name: second workflow
 on:
   push:
     branches:
