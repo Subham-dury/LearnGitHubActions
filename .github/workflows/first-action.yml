@@ -8,7 +8,7 @@ jobs:
         run: echo "Action starting"
 
       - name: print context
-        run: echo "'context:' ${{ github.context }}"
+        run: echo "${{ toJSON(github) }}"
 
       - name: print end
         run: echo "Action ended"
