@@ -28,6 +28,7 @@ jobs:
         working-directory: base-Proj2
   
   build_code:
+    needs: test_code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
