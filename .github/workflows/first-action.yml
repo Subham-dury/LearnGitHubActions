@@ -13,6 +13,7 @@ jobs:
           path: base-proj3/target/
           key: base-proj3-jar-${{ github.ref_name }}
           restore-keys: base-proj3-jar
+          save-always: true
 
       - name: List retrieved artifact
         run: ls -l base-proj3/target
