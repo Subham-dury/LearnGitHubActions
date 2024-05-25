@@ -15,7 +15,7 @@ jobs:
           restore-keys: ${{ runner.os }}-build-
 
       - name: List retrieved artifact
-        run: ls -l base-proj3/target
+        run: ls -l base-proj3/target/
 
       - name: print end
         run: echo "Action ended"
