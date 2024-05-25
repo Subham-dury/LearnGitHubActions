@@ -47,7 +47,14 @@ jobs:
       with:
         name: base-proj3-jar
         path: base-proj3/target/*.jar
-  
+
+    - name: Cache artifact
+      uses: actions/cache@v4
+      with:
+        path: base-proj3/target/*.jar
+        key: base-proj3-jar-${{ github.ref_name }}
+        restore-keys: base-proj3-jar
+        
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -59,10 +66,3 @@ jobs:
 
       - name: Output artifact
         run: ls
-
-      - name: Cache artifact
-        uses: actions/cache@v4
-        with:
-          path: base-proj3/target/*.jar
-          key: base-proj3-jar-${{ github.ref_name }}
-          restore-keys: base-proj3-jar
