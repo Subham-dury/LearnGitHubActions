@@ -65,4 +65,4 @@ jobs:
         with:
           path: base-proj3/target/*.jar
           key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-build-
+          restore-keys: ${{ runner.os }}-base-proj3-jar
