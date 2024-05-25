@@ -22,6 +22,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'microsoft'
+        cache: maven
 
     # Cache Maven dependencies to speed up build times
     - name: Cache Maven packages
