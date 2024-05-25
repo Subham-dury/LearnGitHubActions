@@ -37,9 +37,13 @@ jobs:
       run: mvn clean install
       working-directory: base-proj3
 
+    # Verify the contents of the target directory
+    - name: List target directory
+      run: ls -l base-proj3/target
+
     # Upload the JAR file to GitHub Actions artifacts   
     - name: Upload JAR file
       uses: actions/upload-artifact@v4
       with:
         name: application-jar
-        path: target/*.jar
+        path: base-proj3/target/*.jar
