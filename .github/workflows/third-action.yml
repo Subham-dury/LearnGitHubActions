@@ -64,5 +64,5 @@ jobs:
         uses: actions/cache@v4
         with:
           path: base-proj3/target/*.jar
-          key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-base-proj3-jar
+          key: base-proj3-jar-${{ github.ref_name }}
+          restore-keys: base-proj3-jar
