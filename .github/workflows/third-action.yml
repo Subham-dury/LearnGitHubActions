@@ -29,8 +29,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: maven-cache-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-        restore-keys: maven-cache-${{ runner.os }}
+        key: maven-cache-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+                ${{ runner.os }}-maven-
 
     # Run Maven package and verify
     - name: Build with Maven
