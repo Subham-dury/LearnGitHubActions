@@ -7,10 +7,13 @@ jobs:
       - name: print start
         run: echo "Action starting"
 
-      - name: Download module1 JAR
+      - name: Get build artifact
         uses: actions/download-artifact@v4
         with:
           name: base-proj3-jar
+
+      - name: Output artifact
+        run: ls
 
       # - name: List base-proj3 artifact directory
       #   run: ls -l base-proj3-artifact
