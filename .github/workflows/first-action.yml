@@ -8,18 +8,17 @@ jobs:
         run: echo "Action starting"
 
       - name: Download module1 JAR
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: base-proj3-jar
-          path: base-proj3-artifact
 
-      - name: List base-proj3 artifact directory
-        run: ls -l base-proj3-artifact
+      # - name: List base-proj3 artifact directory
+      #   run: ls -l base-proj3-artifact
 
-      - name: Print JAR file details
-        run: |
-          echo "JAR file details:"
-          ls -l base-proj3-artifact/*.jar
+      # - name: Print JAR file details
+      #   run: |
+      #     echo "JAR file details:"
+      #     ls -l base-proj3-artifact/*.jar
 
       - name: print end
         run: echo "Action ended"

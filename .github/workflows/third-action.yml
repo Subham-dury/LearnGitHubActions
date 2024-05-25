@@ -47,3 +47,15 @@ jobs:
       with:
         name: base-proj3-jar
         path: base-proj3/target/*.jar
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: base-proj3-jar
+
+      - name: Output artifact
+        run: ls
