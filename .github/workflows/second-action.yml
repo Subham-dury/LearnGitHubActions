@@ -21,12 +21,12 @@ jobs:
         # Install dependencies
       - name: Install dependencies
         run: npm ci
-        working-directory: base-proj2
+        working-directory: base-Proj2
 
         # Run tests
       - name: Run tests
         run: npm test
-        working-directory: base-proj2
+        working-directory: base-Proj2
   
   build_code:
     needs: test_code
@@ -42,8 +42,8 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: base-proj2
+        working-directory: base-Proj2
 
       - name: Build code
         run: npm run build
-        working-directory: base-proj2
+        working-directory: base-Proj2
