@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
@@ -64,20 +64,18 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifact
-          path: base-Proj2/build
+          name: build-files
+          path: base-Proj2
 
   deploy_code:
     needs: build_code
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
+    
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: build-artifact
+          name: build-files
       
       - name: Deploy code
         run: echo "Deploying code..."
