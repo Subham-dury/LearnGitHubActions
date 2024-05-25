@@ -1,68 +1,41 @@
-name: third workflow
+name: Build and Upload JAR Artifact
 on:
   push:
     branches:
-      - main # run action when push in main branch
+      - main
   workflow_dispatch:
+
 jobs:
   build:
-
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps to run as part of the job
     steps:
-    # Check out the repository code
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Set up JDK 17 (you can change the version if needed)
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'microsoft'
-        cache: maven
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'microsoft'
+          cache: maven
 
-    # Cache Maven dependencies to speed up build times
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: maven-cache-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-        restore-keys: maven-cache-${{ runner.os }}
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: maven-cache-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: maven-cache-${{ runner.os }}
 
-    # Run Maven package and verify
-    - name: Build with Maven
-      run: mvn clean install
-      working-directory: base-proj3
+      - name: Build with Maven
+        run: mvn clean install
+        working-directory: base-proj3
 
-    # Verify the contents of the target directory
-    - name: List target directory
-      run: ls -l base-proj3/target
+      - name: List target directory
+        run: ls -l base-proj3/target
 
-    # # Upload the JAR file to GitHub Actions artifacts   
-    # - name: Upload JAR file
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: base-proj3-jar
-    #     path: base-proj3/target/*.jar
-
-    - name: Cache build artifact
-      uses: actions/cache@v4
-      with:
-        path: base-proj3/target/*.jar
-        key: base-proj3-jar-${{ github.ref_name }}
-        restore-keys: base-proj3-jar
-
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Get build artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: base-proj3-jar
-
-  #     - name: Output artifact
-  #       run: ls
+      - name: Upload JAR file
+        uses: actions/upload-artifact@v4
+        with:
+          name: base-proj3-jar
+          path: base-proj3/target/*.jar

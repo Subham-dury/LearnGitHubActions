@@ -1,22 +1,25 @@
-name: first workflow
-on: workflow_dispatch
+name: Download and Use JAR Artifact
+on:
+  workflow_dispatch:
+
 jobs:
-  first-job:
+  retrieve-artifact:
     runs-on: ubuntu-latest
+
     steps:
-      - name: print start
-        run: echo "Action starting"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Restore build artifact
-        uses: actions/cache@v3
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v4
         with:
-          path: base-proj3/target/
-          key: base-proj3-jar-${{ github.ref_name }}
-          restore-keys: base-proj3-jar
-          save-always: true
+          name: base-proj3-jar
+          path: base-proj3/target
 
-      - name: List retrieved artifact
+      - name: List downloaded artifact
         run: ls -l base-proj3/target
 
-      - name: print end
-        run: echo "Action ended"
+      - name: Print JAR file details
+        run: |
+          echo "JAR file details:"
+          ls -l base-proj3/target/*.jar
