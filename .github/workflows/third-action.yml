@@ -26,11 +26,11 @@ jobs:
 
     # Cache Maven dependencies to speed up build times
     - name: Cache Maven packages
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-maven
+        key: maven-cache-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+        restore-keys: maven-cache-${{ runner.os }}
 
     # Run Maven package and verify
     - name: Build with Maven
@@ -41,28 +41,28 @@ jobs:
     - name: List target directory
       run: ls -l base-proj3/target
 
-    # Upload the JAR file to GitHub Actions artifacts   
-    - name: Upload JAR file
-      uses: actions/upload-artifact@v4
-      with:
-        name: base-proj3-jar
-        path: base-proj3/target/*.jar
+    # # Upload the JAR file to GitHub Actions artifacts   
+    # - name: Upload JAR file
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: base-proj3-jar
+    #     path: base-proj3/target/*.jar
 
-    - name: Cache artifact
+    - name: Cache build artifact
       uses: actions/cache@v4
       with:
         path: base-proj3/target/*.jar
         key: base-proj3-jar-${{ github.ref_name }}
         restore-keys: base-proj3-jar
-        
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: base-proj3-jar
 
-      - name: Output artifact
-        run: ls
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get build artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: base-proj3-jar
+
+  #     - name: Output artifact
+  #       run: ls

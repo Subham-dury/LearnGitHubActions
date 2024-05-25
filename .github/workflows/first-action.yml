@@ -8,14 +8,14 @@ jobs:
         run: echo "Action starting"
 
       - name: Restore build artifact
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: base-proj3/target/
           key: base-proj3-jar-${{ github.ref_name }}
           restore-keys: base-proj3-jar
 
       - name: List retrieved artifact
-        run: ls -l
+        run: ls -l base-proj3/target
 
       - name: print end
         run: echo "Action ended"
