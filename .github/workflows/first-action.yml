@@ -1,25 +1,11 @@
-name: Download and Use JAR Artifact
-on:
-  workflow_dispatch:
-
+name: first workflow
+on: workflow_dispatch
 jobs:
-  retrieve-artifact:
+  first-job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: print start
+        run: echo "Action starting"
 
-      - name: Download JAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: base-proj3-jar
-          path: base-proj3/target
-
-      - name: List downloaded artifact
-        run: ls -l base-proj3/target
-
-      - name: Print JAR file details
-        run: |
-          echo "JAR file details:"
-          ls -l base-proj3/target/*.jar
+      - name: print end
+        run: echo "Action ended"
