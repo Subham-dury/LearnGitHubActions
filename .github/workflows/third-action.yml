@@ -35,9 +35,9 @@ jobs:
     # Run Maven package and verify
     - name: Build with Maven
       run: mvn clean install
-      working-directory: base-Proj3
+      working-directory: base-proj3
 
     # Optionally, you can add steps to run tests and more
     - name: Run tests
       run: mvn test
-      working-directory: base-Proj3
+      working-directory: base-proj3
