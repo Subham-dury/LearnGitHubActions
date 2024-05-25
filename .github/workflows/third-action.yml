@@ -45,5 +45,5 @@ jobs:
     - name: Upload JAR file
       uses: actions/upload-artifact@v4
       with:
-        name: application-jar
+        name: base-proj3-jar
         path: base-proj3/target/*.jar
