@@ -37,7 +37,9 @@ jobs:
       run: mvn clean install
       working-directory: base-proj3
 
-    # Optionally, you can add steps to run tests and more
-    - name: Run tests
-      run: mvn test
-      working-directory: base-proj3
+    # Upload the JAR file to GitHub Actions artifacts   
+    - name: Upload JAR file
+      uses: actions/upload-artifact@v4
+      with:
+        name: application-jar
+        path: target/*.jar
