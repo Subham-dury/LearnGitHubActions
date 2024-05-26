@@ -8,6 +8,7 @@ env:
   MONGODB_DB_NAME: cluster-1
 jobs:
   test:
+    environment: development
     env:
       MONGODB_CLUSTER_ADDRESS: cluster-1.8ndbkwc.mongodb.net
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
