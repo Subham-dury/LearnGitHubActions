@@ -8,10 +8,10 @@ jobs:
         run: echo "Action starting"
 
       - name: Run Second job
-        uses: ./.github/workflows/second-workflow.yml
+        uses: ./.github/workflows/second-action.yml
 
       - name: Run Third job
-        uses: ./.github/workflows/third-workflow.yml
+        uses: ./.github/workflows/third-action.yml
 
       - name: print end
         run: echo "Action ended"
