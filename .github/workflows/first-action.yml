@@ -7,6 +7,9 @@ jobs:
       - name: print start
         run: echo "Action starting"
 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Run Third job
         uses: ./.github/workflows/third-action.yml
 
