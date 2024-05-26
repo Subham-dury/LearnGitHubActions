@@ -7,5 +7,11 @@ jobs:
       - name: print start
         run: echo "Action starting"
 
+      - name: Run Second job
+        uses: ./.github/workflows/second-workflow.yml
+
+      - name: Run Third job
+        uses: ./.github/workflows/third-workflow.yml
+
       - name: print end
         run: echo "Action ended"
