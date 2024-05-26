@@ -1,4 +1,4 @@
-name: Deployment
+name: fourth-action
 on:
   push:
     branches:
@@ -14,10 +14,16 @@ jobs:
       MONGODB_USERNAME: karchowdhurysubham
       MONGODB_PASSWORD: 5enH1XPMpVJYILe1
       PORT: 8080
+
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v4
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -27,12 +33,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: base-Proj4
 
       - name: Run server
         run: npm start & npx wait-on http://127.0.0.1:$PORT
+        working-directory: base-Proj4
+
 
       - name: Run tests
         run: npm test
+        working-directory: base-Proj4
+
 
       - name: Output information
         run: |
