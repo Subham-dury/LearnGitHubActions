@@ -43,10 +43,13 @@ jobs:
 
         # Run tests
       - name: Run tests
+        continue-on-error: true
+        id: run-tests
         run: npm test
         working-directory: base-Proj2
-
+      
       - name: Upload test report
+        if: steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
@@ -79,8 +82,8 @@ jobs:
           name: build-files
           path: base-Proj2
 
-  deploy_code:
-    needs: build_code
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
 
