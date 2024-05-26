@@ -5,7 +5,8 @@ const dbUser = process.env.MONGODB_USERNAME;
 const dbPassword = process.env.MONGODB_PASSWORD;
 const dbName = process.env.MONGODB_DB_NAME;
 
-const uri = `mongodb+srv://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://karchowdhurysubham:5enH1XPMpVJYILe1@cluster-1.8ndbkwc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-1`
 const client = new MongoClient(uri);
 
 console.log('Trying to connect to db');
