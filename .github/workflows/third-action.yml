@@ -55,14 +55,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Check for workflows
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Listing all files:"
-          cd '../../'
-          echo "Current directory: $(pwd)"
-          ls -l
-
       - name: Get build artifact
         uses: actions/download-artifact@v4
         with:

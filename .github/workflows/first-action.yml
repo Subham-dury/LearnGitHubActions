@@ -9,3 +9,17 @@ jobs:
 
       - name: print end
         run: echo "Action ended"
+
+      - name: Print current directory
+        run: |
+          echo "Current directory before changing: $(pwd)"
+          echo "Listing files:"
+          ls -l
+
+      - name: List .github/workflows directory
+        run: |
+          echo "Changing directory to .github/workflows"
+          cd .github/workflows
+          echo "Current directory after changing: $(pwd)"
+          echo "Listing files in .github/workflows:"
+          ls -l
