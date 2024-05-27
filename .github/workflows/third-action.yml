@@ -58,8 +58,9 @@ jobs:
       - name: Check for workflows
         run: |
           cd '../'
-          ls -lrt
-          pwd
+          echo "Current directory: $(pwd)"
+          echo "Listing all files:"
+          ls -la
 
       - name: Get build artifact
         uses: actions/download-artifact@v4
