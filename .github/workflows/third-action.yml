@@ -59,7 +59,9 @@ jobs:
         run: |
           echo "Current directory: $(pwd)"
           echo "Listing all files:"
-          ls -la
+          cd 'LearnGitHubActions'
+          echo "Current directory: $(pwd)"
+          ls -l
 
       - name: Get build artifact
         uses: actions/download-artifact@v4
