@@ -58,7 +58,7 @@ jobs:
       - name: Check for workflows
         run: |
           cd '../'
-          ls -l
+          ls -lrt
           pwd
 
       - name: Get build artifact
