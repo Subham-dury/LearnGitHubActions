@@ -1,4 +1,4 @@
-name: first workflow
+name: proj1 workflow
 on: push
 jobs:
   first-job:
