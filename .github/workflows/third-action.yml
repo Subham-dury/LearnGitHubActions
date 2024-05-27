@@ -1,70 +1,70 @@
-name: third workflow
-on:
-  push:
-    branches:
-      - main # run action when push in main branch
-  workflow_dispatch:
+# name: third workflow
+# on:
+#   push:
+#     branches:
+#       - main # run action when push in main branch
+#   workflow_dispatch:
     
-jobs:
-  build:
+# jobs:
+#   build:
 
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
 
-    # Steps to run as part of the job
-    steps:
-    # Check out the repository code
-    - name: Checkout code
-      uses: actions/checkout@v4
+#     # Steps to run as part of the job
+#     steps:
+#     # Check out the repository code
+#     - name: Checkout code
+#       uses: actions/checkout@v4
 
-    # Set up JDK 17 (you can change the version if needed)
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'microsoft'
-        cache: maven
+#     # Set up JDK 17 (you can change the version if needed)
+#     - name: Set up JDK 17
+#       uses: actions/setup-java@v4
+#       with:
+#         java-version: '17'
+#         distribution: 'microsoft'
+#         cache: maven
 
-    # Cache Maven dependencies to speed up build times
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: maven-cache-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-                ${{ runner.os }}-maven-
+#     # Cache Maven dependencies to speed up build times
+#     - name: Cache Maven packages
+#       uses: actions/cache@v3
+#       with:
+#         path: ~/.m2/repository
+#         key: maven-cache-${{ hashFiles('**/pom.xml') }}
+#         restore-keys: |
+#                 ${{ runner.os }}-maven-
 
-    # Run Maven package and verify
-    - name: Build with Maven
-      run: mvn clean install
-      working-directory: base-proj3
+#     # Run Maven package and verify
+#     - name: Build with Maven
+#       run: mvn clean install
+#       working-directory: base-proj3
 
-    # # Verify the contents of the target directory
-    # - name: List target directory
-    #   run: ls -l base-proj3/target
+#     # # Verify the contents of the target directory
+#     # - name: List target directory
+#     #   run: ls -l base-proj3/target
 
-    # Upload the JAR file to GitHub Actions artifacts   
-    - name: Upload JAR file
-      uses: actions/upload-artifact@v4
-      with:
-        name: base-proj3-jar
-        path: base-proj3/target/*.jar
+#     # Upload the JAR file to GitHub Actions artifacts   
+#     - name: Upload JAR file
+#       uses: actions/upload-artifact@v4
+#       with:
+#         name: base-proj3-jar
+#         path: base-proj3/target/*.jar
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+#   deploy:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
 
-      - name: Get build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: base-proj3-jar
+#       - name: Get build artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: base-proj3-jar
 
-      - name: Output artifact
-        run: ls
+#       - name: Output artifact
+#         run: ls
       
 
-      # - name: Call first action
-      #   uses: ./.github/workflows/first-action.yml@main
+#       # - name: Call first action
+#       #   uses: ./.github/workflows/first-action.yml@main
 
 
