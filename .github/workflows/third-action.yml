@@ -63,5 +63,6 @@ jobs:
         run: ls
       
       - name: Call first action
-        uses: Subham-dury/LearnGitHubActions/.github/workflows/first-action.yml
+        uses: Subham-dury/LearnGitHubActions/.github/workflows/first-action.yml@main
+
 
