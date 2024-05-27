@@ -19,12 +19,21 @@ jobs:
           echo "Finding third-action.yml"
           relative_path=$(find . -name third-action.yml)
           absolute_path=$(readlink -f "$relative_path")
+          dir_path=$(dirname "$relative_path")
           echo "Relative path: $relative_path"
           echo "Absolute path: $absolute_path"
+          echo "Directory path: $dir_path"
           echo "::set-output name=relative_path::$relative_path"
           echo "::set-output name=absolute_path::$absolute_path"
+          echo "::set-output name=dir_path::$dir_path"
 
       - name: Output paths
         run: |
           echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
           echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
+          echo "Directory path: ${{ steps.find-file.outputs.dir_path }}"
+
+      - name: Change directory to third-action.yml
+        run: |
+          cd ${{ steps.find-file.outputs.dir_path }}
+          echo "Changed directory to: $(pwd)"
