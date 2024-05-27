@@ -1,0 +1,17 @@
+name: first workflow
+on: push
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print start
+        run: echo "Action starting"
+
+      - name: print end
+        run: echo "Action ended"
+
+      - name: Print current directory
+        run: |
+          echo "Current directory before changing: $(pwd)"
+          echo "Listing files:"
+          ls -l
