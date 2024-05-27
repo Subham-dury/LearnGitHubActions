@@ -18,6 +18,6 @@ jobs:
 
       - name: List .github/workflows directory
         run: |
-            cd "../../../"
+            cd "../../../../"
             echo "Current directory: $(pwd)"
             ls -la
