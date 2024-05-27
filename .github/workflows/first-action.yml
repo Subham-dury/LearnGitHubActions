@@ -1,12 +1,27 @@
 name: first workflow
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
+        description: name of the artifact to download
+        default: base-proj3-jar
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Print current directory
-        run: |
-          echo "Current directory before changing: $(pwd)"
-          echo "Listing files:"
-          ls -r
+      - name: Print start message
+        run: echo "Starting download task"
+
+      - name: Get build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+
+      - name: Output artifact
+        run: ls
+
+      - name: Print end message
+        run: echo "Download task completed"

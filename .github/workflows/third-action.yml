@@ -49,22 +49,12 @@ jobs:
         name: base-proj3-jar
         path: base-proj3/target/*.jar
     
-  call-out:
-    needs: build
-    uses: ./.github/workflows/first-action.yml
-
   deploy:
     needs: build
-    runs-on: ubuntu-latest
-    steps:
+    uses: ./.github/workflows/first-action.yml
+    with:
+      artifact-name: base-proj3/target/*.jar
 
-      - name: Get build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: base-proj3-jar
-
-      - name: Output artifact
-        run: ls
 
 
 
