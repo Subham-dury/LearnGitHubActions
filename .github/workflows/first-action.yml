@@ -1,11 +1,11 @@
 name: first workflow
-on: push
+on: workflow_call
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Code
-        uses: actions/checkout@v4
+      # - name: Get Code
+      #   uses: actions/checkout@v4
 
       - name: Print current directory
         run: |
@@ -13,23 +13,23 @@ jobs:
           echo "Listing files:"
           ls -l
 
-      - name: Find third-action.yml
-        id: find-file
-        run: |
-          echo "Finding third-action.yml"
-          relative_path=$(find . -name third-action.yml)
-          absolute_path=$(readlink -f "$relative_path")
-          echo "Relative path: $relative_path"
-          echo "Absolute path: $absolute_path"
-          echo "::set-output name=relative_path::$relative_path"
-          echo "::set-output name=absolute_path::$absolute_path"
+      # - name: Find third-action.yml
+      #   id: find-file
+      #   run: |
+      #     echo "Finding third-action.yml"
+      #     relative_path=$(find . -name third-action.yml)
+      #     absolute_path=$(readlink -f "$relative_path")
+      #     echo "Relative path: $relative_path"
+      #     echo "Absolute path: $absolute_path"
+      #     echo "::set-output name=relative_path::$relative_path"
+      #     echo "::set-output name=absolute_path::$absolute_path"
 
-      - name: Output paths
-        run: |
-          echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
-          echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
+      # - name: Output paths
+      #   run: |
+      #     echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
+      #     echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
 
-      - name: Change directory to third-action.yml
-        run: |
-          cd './.github/workflows/'
-          echo "Changed directory to: $(pwd)"
+      # - name: Change directory to third-action.yml
+      #   run: |
+      #     cd './.github/workflows/'
+      #     echo "Changed directory to: $(pwd)"
