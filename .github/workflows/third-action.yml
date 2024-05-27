@@ -59,7 +59,7 @@ jobs:
         run: |
           echo "Current directory: $(pwd)"
           echo "Listing all files:"
-          cd '../'
+          cd '../../'
           echo "Current directory: $(pwd)"
           ls -l
 
