@@ -68,6 +68,7 @@ jobs:
         run: |
           cd '../'
           ls -R
+          find . -name first-action.yml
       #     echo "Finding first-action.yml"
       #     relative_path=$(find . -name first-action.yml)
       #     absolute_path=$(readlink -f "$relative_path")
