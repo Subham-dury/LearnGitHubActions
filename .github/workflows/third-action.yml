@@ -54,6 +54,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+
+      - name: Check for workflows
+        run: |
+          cd '../'
+          ls -l
+              
       - name: Get build artifact
         uses: actions/download-artifact@v4
         with:
@@ -62,10 +68,7 @@ jobs:
       - name: Output artifact
         run: ls
       
-      - name: Check for workflows
-        run: |
-          cd './'
-          ls -l
+
       # - name: Call first action
       #   uses: ./.github/workflows/first-action.yml@main
 
