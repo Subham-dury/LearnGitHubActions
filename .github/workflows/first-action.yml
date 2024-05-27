@@ -4,11 +4,8 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: print start
-        run: echo "Action starting"
-
-      - name: print end
-        run: echo "Action ended"
+      - name: Get Code
+        uses: actions/checkout@v4
 
       - name: Print current directory
         run: |
