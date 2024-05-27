@@ -39,9 +39,9 @@ jobs:
       run: mvn clean install
       working-directory: base-proj3
 
-    # # Verify the contents of the target directory
-    # - name: List target directory
-    #   run: ls -l base-proj3/target
+    # Verify the contents of the target directory
+    - name: List target directory
+      run: ls -l base-proj3/target
 
     # Upload the JAR file to GitHub Actions artifacts   
     - name: Upload JAR file
@@ -62,9 +62,28 @@ jobs:
 
       - name: Output artifact
         run: ls
-      
 
-      # - name: Call first action
-      #   uses: ./.github/workflows/first-action.yml@main
+      - name: Print current directory
+        run: |
+          echo "Current directory before changing: $(pwd)"
+          echo "Listing files:"
+          ls -l
+
+      - name: Find first-action.yml
+        id: find-file
+        run: |
+          echo "Finding third-action.yml"
+          relative_path=$(find . -name first-action.yml)
+          absolute_path=$(readlink -f "$relative_path")
+          echo "Relative path: $relative_path"
+          echo "Absolute path: $absolute_path"
+          echo "::set-output name=relative_path::$relative_path"
+          echo "::set-output name=absolute_path::$absolute_path"
+
+      - name: Output paths
+        run: |
+          echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
+          echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
+
 
 

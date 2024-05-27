@@ -28,7 +28,6 @@ jobs:
         run: |
           echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
           echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
-          echo "Directory path: ${{ steps.find-file.outputs.dir_path }}"
 
       - name: Change directory to third-action.yml
         run: |
