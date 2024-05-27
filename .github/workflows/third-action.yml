@@ -53,7 +53,7 @@ jobs:
     needs: build
     uses: ./.github/workflows/first-action.yml
     with:
-      artifact-name: base-proj3/target/*.jar
+      artifact-name: base-proj3-jar
 
 
 
