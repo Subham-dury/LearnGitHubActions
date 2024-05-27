@@ -57,7 +57,7 @@ jobs:
 
       - name: Check for workflows
         run: |
-          cd './.github/workflows/'
+          cd '../.github/'
           echo "Current directory: $(pwd)"
           echo "Listing all files:"
           ls -la
