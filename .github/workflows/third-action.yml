@@ -39,9 +39,9 @@ jobs:
       run: mvn clean install
       working-directory: base-proj3
 
-    # Verify the contents of the target directory
-    - name: List target directory
-      run: ls -l base-proj3/target
+    # # Verify the contents of the target directory
+    # - name: List target directory
+    #   run: ls -l base-proj3/target
 
     # Upload the JAR file to GitHub Actions artifacts   
     - name: Upload JAR file
@@ -59,9 +59,9 @@ jobs:
         run: |
           echo "Current directory: $(pwd)"
           echo "Listing all files:"
-          cd 'LearnGitHubActions'
-          echo "Current directory: $(pwd)"
-          ls -l
+          # cd './LearnGitHubActions'
+          # echo "Current directory: $(pwd)"
+          # ls -l
 
       - name: Get build artifact
         uses: actions/download-artifact@v4
