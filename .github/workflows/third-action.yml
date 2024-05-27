@@ -63,28 +63,23 @@ jobs:
       - name: Output artifact
         run: ls
 
-      - name: Print current directory
-        run: |
-          echo "Current directory before changing: $(pwd)"
-          echo "Listing files:"
-          ls -l
-
       - name: Find first-action.yml
         id: find-file
         run: |
           cd '../../'
-          echo "Finding first-action.yml"
-          relative_path=$(find . -name first-action.yml)
-          absolute_path=$(readlink -f "$relative_path")
-          echo "Relative path: $relative_path"
-          echo "Absolute path: $absolute_path"
-          echo "::set-output name=relative_path::$relative_path"
-          echo "::set-output name=absolute_path::$absolute_path"
+          ls -r
+      #     echo "Finding first-action.yml"
+      #     relative_path=$(find . -name first-action.yml)
+      #     absolute_path=$(readlink -f "$relative_path")
+      #     echo "Relative path: $relative_path"
+      #     echo "Absolute path: $absolute_path"
+      #     echo "::set-output name=relative_path::$relative_path"
+      #     echo "::set-output name=absolute_path::$absolute_path"
 
-      - name: Output paths
-        run: |
-          echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
-          echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
+      # - name: Output paths
+      #   run: |
+      #     echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
+      #     echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
 
 
 
