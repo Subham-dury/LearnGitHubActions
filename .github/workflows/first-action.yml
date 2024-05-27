@@ -17,6 +17,7 @@ jobs:
           ls -l
 
       - name: List .github/workflows directory
+        working-directory: .github/workflows
         run: |
           echo "Changing directory to .github/workflows"
           cd .github/workflows
