@@ -61,6 +61,5 @@ jobs:
         run: ls
       
       - name: Call first action
-        uses: ./.github/actions/first-action
-        with:
-          message: "Hello from first action"
+        uses: .github\workflows\first-action.yml
+
