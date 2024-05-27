@@ -1,17 +1,11 @@
 name: first workflow
-on: workflow_dispatch
+on: workflow_call
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
       - name: print start
         run: echo "Action starting"
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Third job
-        uses: ./third-action.yml
 
       - name: print end
         run: echo "Action ended"
