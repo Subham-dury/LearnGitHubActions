@@ -59,7 +59,8 @@ jobs:
         run: |
           cd '../'
           ls -l
-              
+          pwd
+
       - name: Get build artifact
         uses: actions/download-artifact@v4
         with:
