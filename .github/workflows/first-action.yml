@@ -4,11 +4,9 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Code
-        uses: actions/checkout@v4
 
       - name: Print current directory
         run: |
           echo "Current directory before changing: $(pwd)"
           echo "Listing files:"
-          ls -l
+          ls -r
