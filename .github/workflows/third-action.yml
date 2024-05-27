@@ -59,6 +59,8 @@ jobs:
         run: |
           echo "Current directory: $(pwd)"
           echo "Listing all files:"
+          cd '../'
+          echo "Current directory: $(pwd)"
           ls -l
 
       - name: Get build artifact
