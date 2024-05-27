@@ -16,5 +16,5 @@ jobs:
       - name: List .github/workflows directory
         run: |
             cd "../"
+            cd "./LearnGitHubActions/.github/workflows/second-action.yml"
             echo "Current directory: $(pwd)"
-            find . -name "*.yml"
