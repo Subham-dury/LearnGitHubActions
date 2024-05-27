@@ -54,9 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      # # Check out the repository code
-      # - name: Checkout code
-      #   uses: actions/checkout@v4
+      # Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Check for workflows
         run: |
