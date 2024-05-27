@@ -62,7 +62,11 @@ jobs:
       - name: Output artifact
         run: ls
       
-      - name: Call first action
-        uses: Subham-dury/LearnGitHubActions/.github/workflows/first-action.yml@main
+      - name: Check for workflows
+        run: |
+          cd './'
+          ls -l
+      # - name: Call first action
+      #   uses: ./.github/workflows/first-action.yml@main
 
 
