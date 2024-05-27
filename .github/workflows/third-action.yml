@@ -54,32 +54,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      # Check out the repository code
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # - name: Run action1
-      #   uses: ./.github/workflows/first-action.yml
-
-      - name: Get build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: base-proj3-jar
-
-      - name: Output artifact
-        run: ls
+      # # Check out the repository code
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
 
       - name: Check for workflows
         run: |
           echo "Current directory before changing: $(pwd)"
           echo "Listing all files:"
           ls -R
-
-      - name: Change directory to first-action.yml
-        # if: steps.find-file.outputs.found == 'true'
+      - name: Find first-action.yml
+        id: find-file
         run: |
-          cd './.github/workflows/'
+          cd $GITHUB_WORKSPACE
+          echo "Searching for first-action.yml from the root directory: $(pwd)"
           ls -R
+          file_path=$(find . -name first-action.yml)
+          if [ -n "$file_path" ]; then
+            echo "Found first-action.yml at: $file_path"
+            absolute_path=$(readlink -f "$file_path")
+            dir_path=$(dirname "$file_path")
+            echo "::set-output name=found::true"
+            echo "::set-output name=relative_path::$file_path"
+            echo "::set-output name=absolute_path::$absolute_path"
+            echo "::set-output name=dir_path::$dir_path"
+          else
+            echo "first-action.yml not found"
+            echo "::set-output name=found::false"
+          fi
+      - name: Output paths
+        if: steps.find-file.outputs.found == 'true'
+        run: |
+          echo "Relative path: ${{ steps.find-file.outputs.relative_path }}"
+          echo "Absolute path: ${{ steps.find-file.outputs.absolute_path }}"
+          echo "Directory path: ${{ steps.find-file.outputs.dir_path }}"
+      - name: Change directory to first-action.yml
+        if: steps.find-file.outputs.found == 'true'
+        run: |
+          cd ${{ steps.find-file.outputs.dir_path }}
+          echo "Changed directory to: $(pwd)"
+      - name: Call first-action.yml
+        uses: ./.github/workflows/first-action.yml
 
 
 
