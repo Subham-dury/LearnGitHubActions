@@ -61,5 +61,5 @@ jobs:
         run: ls
       
       - name: Call first action
-        uses: .github\workflows\first-action.yml
+        uses: \.github\workflows\first-action.yml
 
