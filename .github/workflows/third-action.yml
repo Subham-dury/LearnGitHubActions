@@ -58,8 +58,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run action1
-        uses: ./.github/workflows/first-action.yml
+      # - name: Run action1
+      #   uses: ./.github/workflows/first-action.yml
 
       - name: Get build artifact
         uses: actions/download-artifact@v4
@@ -68,3 +68,18 @@ jobs:
 
       - name: Output artifact
         run: ls
+
+      - name: Check for workflows
+        run: |
+          echo "Current directory before changing: $(pwd)"
+          echo "Listing all files:"
+          ls -R
+
+      - name: Change directory to first-action.yml
+        # if: steps.find-file.outputs.found == 'true'
+        run: |
+          cd './.github/workflows/'
+          ls -R
+
+
+
