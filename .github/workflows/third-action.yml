@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main # run action when push in main branch
+  workflow_dispatch:
+    
 jobs:
   build:
 
@@ -61,5 +63,5 @@ jobs:
         run: ls
       
       - name: Call first action
-        uses: ../.github/worklfows/first-action.yml
+        uses: LearnGitHubActions/.github/workflows/first-action.yml
 
